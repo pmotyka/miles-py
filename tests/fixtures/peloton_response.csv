@@ -1,0 +1,5 @@
+Workout Timestamp,Fitness Discipline,Class Timestamp,Length (minutes),Distance (mi),Calories Burned,Avg Heart Rate (bpm)
+1640995200,Cycling,2022-01-01 10:00:00,30,12.5,350,145
+1641081600,Cycling,2022-01-02 11:00:00,45,18.2,480,152
+1641168000,Running,2022-01-03 09:00:00,30,3.1,280,140
+1641254400,Bike Bootcamp,2022-01-04 12:00:00,60,25.0,650,155

@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "id": "workout_123",
+      "created_at": 1640995200,
+      "fitness_discipline": "cycling",
+      "title": "30 Min HIIT Ride",
+      "total_work": 1800,
+      "distance": 20116.8,
+      "calories": 350,
+      "avg_heart_rate": 145
+    },
+    {
+      "id": "workout_124", 
+      "created_at": 1641081600,
+      "fitness_discipline": "cycling",
+      "title": "45 Min Power Zone Ride",
+      "total_work": 2700,
+      "distance": 29296.0,
+      "calories": 480,
+      "avg_heart_rate": 152
+    },
+    {
+      "id": "workout_125",
+      "created_at": 1641168000,
+      "fitness_discipline": "running",
+      "title": "30 Min Tread Run",
+      "total_work": 1800,
+      "distance": 4989.6,
+      "calories": 280,
+      "avg_heart_rate": 140
+    }
+  ],
+  "page": 0,
+  "limit": 1000,
+  "total": 3
+}
