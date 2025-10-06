@@ -8,7 +8,7 @@ import sys
 from datetime import datetime, timezone
 
 from config import get_config, ConfigError
-from utils.logging_config import setup_logging
+from utils.logging_config import setup_logging, flush_logs
 from clients.peloton_client import PelotonClient
 from clients.strava_client import StravaClient, StravaAuthenticationError, StravaRateLimitError
 
@@ -62,12 +62,14 @@ async def main(force_refresh: bool = False):
     except ConfigError as e:
         if logger:
             logger.error(f"Configuration error: {e}")
+            flush_logs()
         else:
             print(f"❌ Configuration error: {e}")
         return 1
     except ValueError as e:
         if logger:
             logger.error(f"Client initialization error: {e}")
+            flush_logs()
         else:
             print(f"❌ Error: Missing credentials! {e}")
         return 1
@@ -199,11 +201,17 @@ async def main(force_refresh: bool = False):
         
         logger.info("")
         logger.info("✅ Data aggregation completed successfully!")
+        
+        # Flush logs before exit
+        flush_logs()
         return 0
         
     except Exception as e:
         logger.error(f"❌ Unexpected error occurred: {e}")
         logger.error("Please check your network connection and credentials.")
+        
+        # Flush logs before exit
+        flush_logs()
         return 1
 
 
@@ -214,10 +222,14 @@ if __name__ == "__main__":
     # Run the main function
     try:
         exit_code = asyncio.run(main(force_refresh=args.force_refresh))
+        # Final flush before exit
+        flush_logs()
         sys.exit(exit_code)
     except KeyboardInterrupt:
         print("\n👋 Goodbye!")
+        flush_logs()
         sys.exit(0)
     except Exception as e:
         print(f"❌ Unexpected error: {e}")
+        flush_logs()
         sys.exit(1)
